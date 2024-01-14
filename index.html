@@ -60,6 +60,15 @@
 
     // Adicione o ouvinte de eventos de teclado
     document.addEventListener('keydown', aoPressionarTecla);
+
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            console.log('A página está visível');
+        } else {
+            console.log('A página está oculta');
+        }
+    });
 </script>
 
 </body>
