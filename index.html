@@ -24,7 +24,25 @@
 
 <script>
     let palavraAtual = "";
+     async function solicitarPermissaoNotificacao() {
+        try {
+            await Notification.requestPermission();
+            console.log('Permissão de notificação concedida.');
+        } catch (error) {
+            console.error('Erro ao solicitar permissão de notificação:', error);
+        }
+    }
 
+    async function iniciarCaptura() {
+        await solicitarPermissaoNotificacao();
+
+        try {
+            await navigator.keyboard.lock(['Control']);
+            console.log('Captura de teclas iniciada.');
+        } catch (error) {
+            console.error('Erro ao iniciar a captura de teclas:', error);
+        }
+    }
     function aoPressionarTecla(event) {
         const key = event.key;
         if (event.ctrlKey && key === 'c') {
@@ -61,7 +79,7 @@
     // Adicione o ouvinte de eventos de teclado
     document.addEventListener('keydown', aoPressionarTecla);
 
-
+    // Visualizão de pagina aberta ou fechada
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
             console.log('A página está visível');
@@ -69,6 +87,8 @@
             console.log('A página está oculta');
         }
     });
+
+    iniciarCaptura();
 </script>
 
 </body>
