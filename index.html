@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ouvindo</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
+
+<div id="output"></div>
+
 <script>
     let palavraAtual = "";
     
@@ -29,14 +35,20 @@
         .then(response => response.json())
         .then(data => {
             console.log('Palavra enviada com sucesso:', data);
+            palavraAtual = "";
+            atualizarOutput();
         })
         .catch(error => console.error('Erro ao enviar palavra:', error));
+    }
+
+    function atualizarOutput() {
+        document.getElementById('output').textContent = `Palavra Atual: ${palavraAtual}`;
     }
 
     // Adicione o ouvinte de eventos de teclado
     document.addEventListener('keydown', aoPressionarTecla);
     
-     function agendarProximoSalvamento() {
+    function agendarProximoSalvamento() {
         salvarPalavra();
         setTimeout(agendarProximoSalvamento, 5000);
     }
