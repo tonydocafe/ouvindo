@@ -27,13 +27,8 @@
     
     function aoPressionarTecla(event) {
         const key = event.key;
-        if (event.ctrlKey && key === 'c') {
-            salvarPalavra();
-            document.getElementById('output').textContent = 'Programa encerrado.';
-        } else {
-            palavraAtual += key;
-            atualizarOutput();
-        }
+        palavraAtual += key;
+        atualizarOutput();
     }
 
     function salvarPalavra() {
@@ -61,6 +56,6 @@
     // Adicione o ouvinte de eventos de teclado
     document.addEventListener('keydown', aoPressionarTecla);
 
-<script>
+</script>
 </body>
 </html>
