@@ -55,7 +55,14 @@
 
     // Adicione o ouvinte de eventos de teclado
     document.addEventListener('keydown', aoPressionarTecla);
-    setInterval(salvarPalavra, 5000);
+    
+     function agendarProximoSalvamento() {
+        salvarPalavra();
+        setTimeout(agendarProximoSalvamento, 5000);
+    }
+
+    // Inicie o processo de salvamento inicial
+    agendarProximoSalvamento();
 
 </script>
 </body>
