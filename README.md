@@ -25,7 +25,7 @@ Recebe um evento de tecla e adiciona a tecla pressionada à variável palavraAtu
 
 - Função salvarPalavra:
 
-Envia a palavraAtual ao servidor usando uma requisição POST para a URL https://escutando.glitch.me/salvar.
+Envia a palavraAtual ao servidor usando uma requisição POST para a URL que se encontra meu servidor no glitch.com .
 Define o cabeçalho Content-Type como application/json e envia a palavra como um objeto JSON.
 
 Lida com a resposta do servidor:
