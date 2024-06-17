@@ -11,7 +11,7 @@ app.post("/salvar", (req, res) => {
   const palavra = req.body.palavra;
 
   // Salvar a palavra em um arquivo .txt
-  fs.appendFile("registro_palavras.txt", palavra + "\n", (err) => {
+  fs.appendFile(" ", palavra + "\n", (err) => {
     if (err) {
       console.error("Erro ao salvar palavra:", err);
       res.status(500).json({ error: "Erro ao salvar palavra" });
