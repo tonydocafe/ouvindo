@@ -136,3 +136,8 @@ Métodos para registrar mensagens de erro e informações no console.
 
 - app.listen
 Método para iniciar o servidor e fazer com que ele escute requisições em uma porta específica.
+
+
+## execução
+
+o arquivo index tem que estar no seu navegador,e o arquivo server em um servidor. 
