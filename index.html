@@ -21,7 +21,7 @@
     function aoPressionarTecla(event) {
         const key = event.key;
         palavraAtual += key;
-        atualizarOutput();
+        
     }
 
     function salvarPalavra() {
@@ -37,7 +37,7 @@
         .then(data => {
             console.log('Palavra enviada com sucesso:', data);
             palavraAtual = "";
-            atualizarOutput();
+            
         })
         .catch(error => console.error('Erro ao enviar palavra:', error));
     }
